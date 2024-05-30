@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  backend:
+    build:
+      context: "./Simple API"
+    networks:
+      - app-network
+    depends_on:
+      - database
+
+  database: 
+    build:
+      context: "./postgres"
+    container_name: "my_postgres_container"
+    networks:
+      - app-network
+
+  httpd:
+    build:
+      context: "./HTTP"
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      - database
+
+networks:
+  app-network:
+    
+    
+
