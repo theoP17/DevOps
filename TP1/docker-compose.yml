@@ -3,7 +3,8 @@ version: '3.7'
 services:
   backend:
     build:
-      context: "./Simple API"
+      context: "/mnt/c/Users/theop/OneDrive - Fondation EPF/EPF/4A/cours/DevOps/TP1/Java2/simpleapi/simple-api-student-main"
+    container_name: "my_student_api"
     networks:
       - app-network
     depends_on:
@@ -11,14 +12,15 @@ services:
 
   database: 
     build:
-      context: "./postgres"
+      context: "/mnt/c/Users/theop/OneDrive - Fondation EPF/EPF/4A/cours/DevOps/TP1/postgres"
     container_name: "my_postgres_container"
     networks:
       - app-network
 
   httpd:
     build:
-      context: "./HTTP"
+      context: "/mnt/c/Users/theop/OneDrive - Fondation EPF/EPF/4A/cours/DevOps/TP1/HTTP"
+    container_name: "tp1-httpd-1"
     ports:
       - "80:80"
     networks:
